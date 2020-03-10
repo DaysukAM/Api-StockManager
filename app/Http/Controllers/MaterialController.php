@@ -3,21 +3,50 @@
 namespace App\Http\Controllers;
 
 use App\Material;
+use App\Rent;
 use Illuminate\Http\Request;
 
 class MaterialController extends Controller
 {
     public function list(Request $request)
     {
+        $tabrent = [];
         $materials = Material::All();
         $tabmaterial = [];
         $i = 0;
         foreach ($materials as $material){
-            $tabmaterial[$i] = $materials[$i]->name;
-            $i++;
+            $materialid = $material->id;
+            $rent = Rent::where('Material_id', $materialid)->get();
+            $tabrent[$i] = $rent;
+
+            if ($rent == "[]"){
+                $tabmaterial[$i] = $materials[$i];
+            }
+                $i++;
         }
         $materials = json_encode($tabmaterial);
         return ($materials);
+    }
+    public function listrent(Request $request)
+    {
+        //fonction de test !!!!
+        $rent = Rent::all();
+        $tabrent = [];
+        $materials = Material::All();
+        $tabmaterial = [];
+        $i = 0;
+        foreach ($materials as $material){
+            $materialid = $material->id;
+            $rent = Rent::where('Material_id', $materialid)->get();
+            $tabrent[$i] = $rent;
+            if ($rent == "[]"){
+                $tabmaterial[$i] = $materials[$i];
+                $i++;
+            }
+        }
+        $rents = json_encode($tabrent);
+        $materials = json_encode($tabmaterial);
+        return ($rents);
     }
     public function create(Request $request)
     {

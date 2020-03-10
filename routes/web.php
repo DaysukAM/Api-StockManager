@@ -18,6 +18,8 @@ Route::get('/', function () {
 });
 Route::get('materials','MaterialController@list');
 
+Route::get('materials/rentlist','MaterialController@listrent');
+
 Route::post('materials/rent/{id}','RentController@rent');
 
 Route::post('materials/create','MaterialController@create');
