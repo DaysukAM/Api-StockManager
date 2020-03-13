@@ -25,3 +25,5 @@ Route::post('materials/rent/{id}','RentController@rent');
 Route::post('materials/create','MaterialController@create');
 
 Route::delete('materials/delete/{id}','MaterialController@delete');
+
+Route::post('user/create','UserController@create');
