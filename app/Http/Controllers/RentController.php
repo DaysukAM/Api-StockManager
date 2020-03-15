@@ -7,11 +7,12 @@ use Illuminate\Http\Request;
 
 class RentController extends Controller
 {
-    public function rent ($id, Request $request){
+    public function rent (Request $request){
         $rent = new Rent();
-        $rent-> Material_id = $id;
+        $rent-> Material_id = $request->Material_id;
+        $rent-> User_id = $request->User_id;
         $rent-> save();
 
-        return "success";
+        return response()->json(['status' => 'succes', 'message' => 'Matériel emprunté']);
     }
 }

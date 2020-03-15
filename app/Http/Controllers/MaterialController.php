@@ -55,7 +55,7 @@ class MaterialController extends Controller
         $materials->desc = $request->desc;
         $materials->save();
 
-        return "send";
+        return response()->json(['status' => 'succes', 'message' => 'Matériel Créé', 'material' => $materials]);
     }
     public function delete($id){
         $users = Material::findOrFail($id);

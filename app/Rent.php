@@ -29,7 +29,7 @@ class Rent extends Model
      * @var array
      */
     protected $fillable = [
-        'Material_id'
+        'Material_id','User_id'
     ];
 
     public $timestamps = false;
