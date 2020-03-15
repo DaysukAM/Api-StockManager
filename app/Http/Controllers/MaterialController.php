@@ -25,7 +25,7 @@ class MaterialController extends Controller
                 $i++;
         }
         $materials = json_encode($tabmaterial);
-        return ($materials);
+        return $tabmaterial;
     }
     public function listrent(Request $request)
     {
